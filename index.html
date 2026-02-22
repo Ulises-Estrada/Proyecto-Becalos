@@ -6,362 +6,544 @@
   <title>El rincón de Osaka</title>
   <!-- Esta metaetiqueta hace que la página se adapte al ancho del dispositivo -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="Multimedia/osakaFavicon.jpg" type="image/x-icon">   
+  <link rel="icon" href="Multimedia/osakaFavicon.jpg" type="image/x-icon">
+  <style>
+    #layout-wrapper {
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    #main-content {
+      flex: 1;
+      padding: 20px;
+      /* Offset físico para que el contenido no quede debajo del sidebar visible */
+      margin-right: 140px;
+      transition: margin-right 0.3s ease;
+    }
+
+    #osaka-contact {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 450px;
+      /* Ancho total expandido */
+      height: 100%;
+      background-color: #ffc1e3;
+      border-left: 10px solid #bc4768;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      /* Offset: Solo se ven 140px por defecto */
+      transform: translateX(310px);
+      /* Para alinear el título vertical al lado del contenido y animacion*/
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: row;
+    }
+
+    #osaka-contact:hover {
+      transform: translateX(0);
+    }
+
+    #visible-main {
+      width: 140px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 50px;
+      cursor: pointer;
+      background-color: rgba(238, 91, 142, 0.1);
+    }
+
+    #visible-main>h2 {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      color: #8e0359;
+      font-size: 28px;
+      transform: rotate(180deg);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+
+    #hidden-form {
+      flex: 1;
+      padding: 40px 25px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s;
+      background-color: #fce4ec;
+    }
+
+    #osaka-contact:hover #hidden-form {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #contact-card {
+      background-color: #ffffff;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #bc4768;
+    }
+
+    .form-group button {
+      background-color: #bc4768;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-group button:hover {
+      background-color: #8e0359;
+    }
+
+    #contact-card h3 {
+      color: #8e0359;
+      margin-top: 0;
+    }
+
+    #contact-card p {
+      color: #ee5b8e;
+      font-size: 14px;
+    }
+
+    #contact-card button {
+      background-color: #bc4768;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #contact-card button:hover {
+      background-color: #8e0359;
+    }
+  </style>
 </head>
 
 <body style="background-color: #f683a9;">
 
-  <header style="background-color: #ee5b8e; height: 200px;">
+  <div id="layout-wrapper">
+    <div id="main-content">
+      <header style="background-color: #ee5b8e; height: 200px;">
 
-    <figure style="float: left; margin-left: 10px;">
-      <img src="Multimedia/FotoDePerfilOsaka.png" alt="Foto de Osaka" height="150px">
-      <center>
-        <figcaption
-          style="margin: 0%; font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: #8e0359;">
-          Osaka</figcaption>
-      </center>
-    </figure>
+        <figure style="float: left; margin-left: 10px;">
+          <img src="Multimedia/FotoDePerfilOsaka.png" alt="Foto de Osaka" height="150px">
+          <center>
+            <figcaption
+              style="margin: 0%; font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: #8e0359;">
+              Osaka</figcaption>
+          </center>
+        </figure>
 
-    <p>
-    <h1
-      style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size: 50px; margin: 0%;color: #8e0359; padding-top: 50px;">
-      El rincón de Osaka</h1>
-    </p>
+        <p>
+        <h1
+          style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;font-size: 50px; margin: 0%;color: #8e0359; padding-top: 50px;">
+          El rincón de Osaka</h1>
+        </p>
 
 
-    <h2
-      style="margin: 10px; font-size: 17px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: #8e0359;">
-      Pensamientos que llegaron tarde pero llegaron...</h2>
-  </header>
+        <h2
+          style="margin: 10px; font-size: 17px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: #8e0359;">
+          Pensamientos que llegaron tarde pero llegaron...</h2>
+      </header>
 
-  <div style="background-color: #ff6efa; padding: 10px;">
-    <nav align="center">
-      <button style="background-color: #F8BBD0; border-color:#F8BBD0; border-radius: 10px; font-size: 15px; color: #bc4768;"><a
-          href="#pensamientos">Pensamientos que me encontraron</a></button>
-      <button style="background-color: #F8BBD0;border-color: #F8BBD0; border-radius: 10px; font-size: 15px; color: #bc4768;"><a href="#suenios">Sueños
-          que parecían legales</a></button>
-      <button style="background-color: #F8BBD0;border-color: #F8BBD0; border-radius: 10px; font-size: 15px; color: #bc4768;"><a
-          href="#observaciones">Observaciones importantes</a></button>
-      <button style="background-color: #F8BBD0;border-color: #F8BBD0; border-radius: 10px; font-size: 15px; color: #bc4768;"><a href="#deportes">Deportes
-          (pero despacio)</a></button>
-      <button style="background-color: #F8BBD0;border-color: #F8BBD0; border-radius: 10px; font-size: 15px; color: #bc4768;"><a href="#estudios">Estudios
-          avanzados sobre comida</a></button>
-    </nav>
-  </div>
-  <main>
-    <section id="pensamientos" style="text-align: left; color: #333333; font-family: 'Montserrat', sans-serif;">
-      <h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: #AB47BC;">
-        Pensamientos que me encontraron</h2>
-      <article class="entradaBlog">
-        <h3>Los pájaros caminan por decisión propia</h3>
-        <p>
-          Hoy vi un pájaro caminando. <br>
-          Podía volar. Lo sé. Tiene alas. <br>
-          <br>
-          Pero decidió caminar. <br>
-          <br>
-          Eso significa que: <br>
-          <br>
-          Volar cansa. <br>
-          <br>
-          Caminar es más interesante. <br>
-          <br>
-          O está infiltrado entre nosotros. <br>
-          <br>
-          Si yo pudiera volar, creo que también caminaría. <br>
-          Para no presumir. <br>
-          <br>
-          Quizá el pájaro es humilde. <br>
-          <br>
-          Voy a observar más pájaros.
-          <div style="text-align: center;">
-          <img src="Multimedia/seccionPensamientosEntradaBlog1.jpg" alt="Osaka con un ave en la cabeza."
-            style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
-        </div>
-        </p>
-      </article>
-      <article class="entradaBlog">
-        <h3>El silencio hace ruido</h3>
-        <p>
-          Hoy me quedé callada mucho tiempo. <br>
-          <br>
-          Y escuché un zumbido. <br>
-          <br>
-          No venía de ningún lado. <br>
-          Era como si el silencio estuviera trabajando. <br>
-          <br>
-          Tal vez el silencio es el sonido del mundo cuando descansa. <br>
-          <br>
-          Si el silencio tiene sonido… <br>
-          entonces no está vacío. <br>
-          <br>
-          Eso significa que nunca estamos realmente solos. <br>
-          <br>
-          Eso es bonito. <br>
-          O preocupante. <br>
-          <br>
-          Aún no decido. <br>
-        </p>
-      </article>
-      <article class="entradaBlog">
-        <h3>¿Las nubes tienen horario?</h3>
-        <p>
-          Las nubes siempre están en movimiento. <br>
-          Pero nunca llegan tarde. <br>
-          <br>
-          Nunca he escuchado a una nube disculparse. <br>
-          <br>
-          Tal vez las nubes no tienen destino. <br>
-          Solo existen mientras se mueven. <br>
-          <br>
-          Eso suena conveniente. <br>
-          <br>
-          Voy a intentar hacer eso mañana. <br>
-          <div style="text-align: center;">
-          <img src="Multimedia/seccionPensamientosEntradaBlog3.jpg" alt="Osaka sentada vista de espalda viendo nubes."
-            style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
-        </div>
-        </p>
-      </article>
-    </section>
-    <hr>
-    <section id="suenios" style="text-align: left; color: #333333; font-family: 'Montserrat', sans-serif;">
-      <h2>Sueños que parecían legales</h2>
-      <article class="entradaBlog">
-        <h3>Chiyo modelo versión 2.0</h3>
-        <p>
-          Anoche soñé que Chiyo Mihama tenía coletas desmontables. <br>
-          <br>
-          Se desenroscaban como tapas de botella. <br>
-          <br>
-          Le pregunté si dolía. <br>
-          Dijo que no, que era actualización. <br>
-          <br>
-          Entonces pensé: <br>
-          <br>
-          Si las coletas se pueden quitar… <br>
-          ¿dónde se guardan? <br>
-          <br>
-          Sigo investigando. <br>
-          <div style="text-align: center;">
-          <img src="Multimedia/seccionSueniosEntradaBlog1.gif" alt="Osaka quitandole sus coletas a Chiyo Mihama."
-            style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
-        </div>
-        </p>
-      </article>
-      <article class="entradaBlog">
-        <h3>Examen que se convirtió en sopa</h3>
-        <p>
-          Soñé que estaba en un examen. <br>
-          <br>
-          La hoja se volvió líquida. <br>
-          <br>
-          Las preguntas flotaban como ingredientes. <br>
-          <br>
-          No sabía si responderlas o comerlas. <br>
-          <br>
-          Desperté con hambre. <br>
-          <br>
-          Tal vez mi subconsciente estudia mejor que yo. <br>
-        </p>
-      </article>
-      <article class="entradaBlog">
-        <h3>El gato que aprobó matemáticas</h3>
-        <p>
-          Soñé que el gato que muerde a Sakaki resolvía ecuaciones. <br>
-          <br>
-          Sin calculadora. <br>
-          <br>
-          Me miró como diciendo: <br>
-          “Esto es básico.” <br>
-          <br>
-          Creo que el problema no es Sakaki. <br>
-          Es que el gato tiene estándares altos. <br>
-          <div style="text-align: center;">
-          <img src="Multimedia/seccionSueniosEntradaBlog3.jpg" alt="Osaka corriendo."
-            style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
-        </div>
-        </p>
-      </article>
-    </section>
-    <hr>
-    <section id="observaciones" style="text-align: left; color: #333333; font-family: 'Montserrat', sans-serif;">
-      <h2>Observaciones importantes</h2>
-      <article class="entradaBlog">
-        <h3>Los gatos detectan intención</h3>
-        <p>
-          Hoy vi a Sakaki intentar acariciar un gato. <br>
-          <br>
-          El gato huyó. <br>
-          <br>
-          No fue miedo. <br>
-          Fue estrategia. <br>
-          <br>
-          Creo que los gatos pueden oler la esperanza. <br>
-          <br>
-          La esperanza es muy fuerte. <br>
-          <br>
-          Tal vez hay que acariciar con indiferencia. <br>
-          <br>
-          Voy a probarlo algún día. <br>
-          <div style="text-align: center;">
-          <img src="Multimedia/seccionObservacionesEntradaBlog1.jpg" alt="Una mujer acercandose a un gato."
-            style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
-        </div>
-        </p>
-      </article>
-      <article class="entradaBlog">
-        <h3>El parpadeo lento</h3>
-        <p>
-          Un gato me miró y parpadeó despacio. <br>
-          <br>
-          Le devolví el parpadeo. <br>
-          <br>
-          No sé qué acordamos. <br>
-          <br>
-          Pero creo que ahora estamos en términos diplomáticos. <br>
-          <div style="text-align: center;">
-          <img src="Multimedia/seccionObservacionesEntradaBlog2.jpg" alt="Osaka con dos gatitos en la cabeza"
-            style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
-        </div>
-        </p>
-      </article>
-      <article class="entradaBlog">
-        <h3>Hipótesis felina</h3>
-        <p>
-          Hipótesis: <br>
-          <br>
-          1. Los gatos dominan el mundo. <br>
-          <br>
-          2. Lo hacen desde las sombras. <br>
-          <br>
-          3. Sakaki sabe demasiado. <br>
-          <br>
-          Fin del reporte.
-          <div style="text-align: center;">
-          <img src="Multimedia/seccionObservacionesEntradaBlog3.jpg" alt="Gato tetrico viendo al frente."
-            style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
-        </div>
-        </p>
-      </article>
-    </section>
-    <hr>
-    <section id="deportes" style="text-align: left; color: #333333; font-family: 'Montserrat', sans-serif;">
-      <h2>Deportes (pero despacio)</h2>
-      <article class="entradaBlog">
-        <h3>La pelota ya sabía</h3>
-        <p>
-          Hoy intenté atrapar la pelota. <br>
-          <br>
-          La pelota venía rápido. <br>
-          <br>
-          Yo pensé rápido. <br>
-          <br>
-          Mi cuerpo no firmó el acuerdo. <br>
-          <br>
-          La pelota ganó. <br>
+      <div style="background-color: #ff6efa; padding: 10px;">
+        <nav align="center">
+          <button
+            style="background-color: #F8BBD0; border-color:#F8BBD0; border-radius: 10px; font-size: 15px; color: #bc4768;"><a
+              href="#pensamientos">Pensamientos que me encontraron</a></button>
+          <button
+            style="background-color: #F8BBD0;border-color: #F8BBD0; border-radius: 10px; font-size: 15px; color: #bc4768;"><a
+              href="#suenios">Sueños
+              que parecían legales</a></button>
+          <button
+            style="background-color: #F8BBD0;border-color: #F8BBD0; border-radius: 10px; font-size: 15px; color: #bc4768;"><a
+              href="#observaciones">Observaciones importantes</a></button>
+          <button
+            style="background-color: #F8BBD0;border-color: #F8BBD0; border-radius: 10px; font-size: 15px; color: #bc4768;"><a
+              href="#deportes">Deportes
+              (pero despacio)</a></button>
+          <button
+            style="background-color: #F8BBD0;border-color: #F8BBD0; border-radius: 10px; font-size: 15px; color: #bc4768;"><a
+              href="#estudios">Estudios
+              avanzados sobre comida</a></button>
+        </nav>
+      </div>
+      <main>
+        <section id="pensamientos" style="text-align: left; color: #333333; font-family: 'Montserrat', sans-serif;">
+          <h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: #AB47BC;">
+            Pensamientos que me encontraron</h2>
+          <article class="entradaBlog">
+            <h3>Los pájaros caminan por decisión propia</h3>
+            <p>
+              Hoy vi un pájaro caminando. <br>
+              Podía volar. Lo sé. Tiene alas. <br>
+              <br>
+              Pero decidió caminar. <br>
+              <br>
+              Eso significa que: <br>
+              <br>
+              Volar cansa. <br>
+              <br>
+              Caminar es más interesante. <br>
+              <br>
+              O está infiltrado entre nosotros. <br>
+              <br>
+              Si yo pudiera volar, creo que también caminaría. <br>
+              Para no presumir. <br>
+              <br>
+              Quizá el pájaro es humilde. <br>
+              <br>
+              Voy a observar más pájaros.
+            <div style="text-align: center;">
+              <img src="Multimedia/seccionPensamientosEntradaBlog1.jpg" alt="Osaka con un ave en la cabeza."
+                style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
+            </div>
+            </p>
+          </article>
+          <article class="entradaBlog">
+            <h3>El silencio hace ruido</h3>
+            <p>
+              Hoy me quedé callada mucho tiempo. <br>
+              <br>
+              Y escuché un zumbido. <br>
+              <br>
+              No venía de ningún lado. <br>
+              Era como si el silencio estuviera trabajando. <br>
+              <br>
+              Tal vez el silencio es el sonido del mundo cuando descansa. <br>
+              <br>
+              Si el silencio tiene sonido… <br>
+              entonces no está vacío. <br>
+              <br>
+              Eso significa que nunca estamos realmente solos. <br>
+              <br>
+              Eso es bonito. <br>
+              O preocupante. <br>
+              <br>
+              Aún no decido. <br>
+            </p>
+          </article>
+          <article class="entradaBlog">
+            <h3>¿Las nubes tienen horario?</h3>
+            <p>
+              Las nubes siempre están en movimiento. <br>
+              Pero nunca llegan tarde. <br>
+              <br>
+              Nunca he escuchado a una nube disculparse. <br>
+              <br>
+              Tal vez las nubes no tienen destino. <br>
+              Solo existen mientras se mueven. <br>
+              <br>
+              Eso suena conveniente. <br>
+              <br>
+              Voy a intentar hacer eso mañana. <br>
+            <div style="text-align: center;">
+              <img src="Multimedia/seccionPensamientosEntradaBlog3.jpg"
+                alt="Osaka sentada vista de espalda viendo nubes."
+                style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
+            </div>
+            </p>
+          </article>
+        </section>
+        <hr>
+        <section id="suenios" style="text-align: left; color: #333333; font-family: 'Montserrat', sans-serif;">
+          <h2>Sueños que parecían legales</h2>
+          <article class="entradaBlog">
+            <h3>Chiyo modelo versión 2.0</h3>
+            <p>
+              Anoche soñé que Chiyo Mihama tenía coletas desmontables. <br>
+              <br>
+              Se desenroscaban como tapas de botella. <br>
+              <br>
+              Le pregunté si dolía. <br>
+              Dijo que no, que era actualización. <br>
+              <br>
+              Entonces pensé: <br>
+              <br>
+              Si las coletas se pueden quitar… <br>
+              ¿dónde se guardan? <br>
+              <br>
+              Sigo investigando. <br>
+            <div style="text-align: center;">
+              <img src="Multimedia/seccionSueniosEntradaBlog1.gif" alt="Osaka quitandole sus coletas a Chiyo Mihama."
+                style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
+            </div>
+            </p>
+          </article>
+          <article class="entradaBlog">
+            <h3>Examen que se convirtió en sopa</h3>
+            <p>
+              Soñé que estaba en un examen. <br>
+              <br>
+              La hoja se volvió líquida. <br>
+              <br>
+              Las preguntas flotaban como ingredientes. <br>
+              <br>
+              No sabía si responderlas o comerlas. <br>
+              <br>
+              Desperté con hambre. <br>
+              <br>
+              Tal vez mi subconsciente estudia mejor que yo. <br>
+            </p>
+          </article>
+          <article class="entradaBlog">
+            <h3>El gato que aprobó matemáticas</h3>
+            <p>
+              Soñé que el gato que muerde a Sakaki resolvía ecuaciones. <br>
+              <br>
+              Sin calculadora. <br>
+              <br>
+              Me miró como diciendo: <br>
+              “Esto es básico.” <br>
+              <br>
+              Creo que el problema no es Sakaki. <br>
+              Es que el gato tiene estándares altos. <br>
+            <div style="text-align: center;">
+              <img src="Multimedia/seccionSueniosEntradaBlog3.jpg" alt="Osaka corriendo."
+                style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
+            </div>
+            </p>
+          </article>
+        </section>
+        <hr>
+        <section id="observaciones" style="text-align: left; color: #333333; font-family: 'Montserrat', sans-serif;">
+          <h2>Observaciones importantes</h2>
+          <article class="entradaBlog">
+            <h3>Los gatos detectan intención</h3>
+            <p>
+              Hoy vi a Sakaki intentar acariciar un gato. <br>
+              <br>
+              El gato huyó. <br>
+              <br>
+              No fue miedo. <br>
+              Fue estrategia. <br>
+              <br>
+              Creo que los gatos pueden oler la esperanza. <br>
+              <br>
+              La esperanza es muy fuerte. <br>
+              <br>
+              Tal vez hay que acariciar con indiferencia. <br>
+              <br>
+              Voy a probarlo algún día. <br>
+            <div style="text-align: center;">
+              <img src="Multimedia/seccionObservacionesEntradaBlog1.jpg" alt="Una mujer acercandose a un gato."
+                style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
+            </div>
+            </p>
+          </article>
+          <article class="entradaBlog">
+            <h3>El parpadeo lento</h3>
+            <p>
+              Un gato me miró y parpadeó despacio. <br>
+              <br>
+              Le devolví el parpadeo. <br>
+              <br>
+              No sé qué acordamos. <br>
+              <br>
+              Pero creo que ahora estamos en términos diplomáticos. <br>
+            <div style="text-align: center;">
+              <img src="Multimedia/seccionObservacionesEntradaBlog2.jpg" alt="Osaka con dos gatitos en la cabeza"
+                style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
+            </div>
+            </p>
+          </article>
+          <article class="entradaBlog">
+            <h3>Hipótesis felina</h3>
+            <p>
+              Hipótesis: <br>
+              <br>
+              1. Los gatos dominan el mundo. <br>
+              <br>
+              2. Lo hacen desde las sombras. <br>
+              <br>
+              3. Sakaki sabe demasiado. <br>
+              <br>
+              Fin del reporte.
+            <div style="text-align: center;">
+              <img src="Multimedia/seccionObservacionesEntradaBlog3.jpg" alt="Gato tetrico viendo al frente."
+                style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
+            </div>
+            </p>
+          </article>
+        </section>
+        <hr>
+        <section id="deportes" style="text-align: left; color: #333333; font-family: 'Montserrat', sans-serif;">
+          <h2>Deportes (pero despacio)</h2>
+          <article class="entradaBlog">
+            <h3>La pelota ya sabía</h3>
+            <p>
+              Hoy intenté atrapar la pelota. <br>
+              <br>
+              La pelota venía rápido. <br>
+              <br>
+              Yo pensé rápido. <br>
+              <br>
+              Mi cuerpo no firmó el acuerdo. <br>
+              <br>
+              La pelota ganó. <br>
 
-        <div style="text-align: center;">
-        <video src="Multimedia/seccionDeportesEntradaBlog1.mp4" 
-         alt="Osaka comiendo después de jugar a la pelota."
-         style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;" 
-         controls>
-        </video>
-        </div>
-        
-        </p>
-      </article>
-      <article class="entradaBlog">
-        <h3>Carrera estratégica</h3>
-        <p>
-          Corrí 100 metros. <br>
-          <br>
-          Bueno, comencé a correr. <br>
-          <br>
-          Luego pensé en por qué estamos midiendo metros. <br>
-          <br>
-          Tal vez deberíamos medir intención. <br>
-          <br>
-          Creo que gané en intención.
-          <div style="text-align: center;">
-          <img src="Multimedia/seccionDeportesEntradaBlog2.webp" alt="Osaka corriendo."
-            style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
-        </div>
-        </p>
-      </article>
-      <article class="entradaBlog">
-        <h3>Tiempo expandido</h3>
-        <p>
-          Cuando el balón viene hacia mí, <br>
-          el mundo se vuelve más lento. <br>
-          <br>
-          No es que yo sea lenta. <br>
-          <br>
-          Es que el tiempo me respeta.
-        </p>
-      </article>
-    </section>
-    <hr>
-    <section id="estudios"">
+            <div style="text-align: center;">
+              <video src="Multimedia/seccionDeportesEntradaBlog1.mp4" alt="Osaka comiendo después de jugar a la pelota."
+                style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;" controls>
+              </video>
+            </div>
+
+            </p>
+          </article>
+          <article class="entradaBlog">
+            <h3>Carrera estratégica</h3>
+            <p>
+              Corrí 100 metros. <br>
+              <br>
+              Bueno, comencé a correr. <br>
+              <br>
+              Luego pensé en por qué estamos midiendo metros. <br>
+              <br>
+              Tal vez deberíamos medir intención. <br>
+              <br>
+              Creo que gané en intención.
+            <div style="text-align: center;">
+              <img src="Multimedia/seccionDeportesEntradaBlog2.webp" alt="Osaka corriendo."
+                style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
+            </div>
+            </p>
+          </article>
+          <article class="entradaBlog">
+            <h3>Tiempo expandido</h3>
+            <p>
+              Cuando el balón viene hacia mí, <br>
+              el mundo se vuelve más lento. <br>
+              <br>
+              No es que yo sea lenta. <br>
+              <br>
+              Es que el tiempo me respeta.
+            </p>
+          </article>
+        </section>
+        <hr>
+        <section id="estudios"">
       <h2>Estudios avanzados sobre comida</h2>
-      <article class="entradaBlog">
-        <h3>El pan tostado cambia personalidad</h3>
-        <p>
-          El pan normal es humilde. <br>
-          <br>
-          El pan tostado suena seguro de sí mismo. <br>
-          <br>
-          Hace “crack”. <br>
-          <br>
-          Eso es carácter. <br>
-          <br>
-          El calor revela identidad. <br>
-          <br>
-          Interesante.
+      <article class=" entradaBlog">
+          <h3>El pan tostado cambia personalidad</h3>
+          <p>
+            El pan normal es humilde. <br>
+            <br>
+            El pan tostado suena seguro de sí mismo. <br>
+            <br>
+            Hace “crack”. <br>
+            <br>
+            Eso es carácter. <br>
+            <br>
+            El calor revela identidad. <br>
+            <br>
+            Interesante.
           <div style="text-align: center;">
-          <img src="Multimedia/seccionEstudiosEntradaBlog1.jpg" alt="Osaka comiendo un pan tranquilamente."
-            style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
-        </div>
-        </p>
-      </article>
-      <article class="entradaBlog">
-        <h3>Curry existencial</h3>
-        <p>
-          El curry tiene muchas cosas mezcladas. <br>
-          <br>
-          Pero no se pelea. <br>
-          <br>
-          Todos los ingredientes cooperan. <br>
-          <br>
-          Tal vez deberíamos ser más como el curry. <br>
-          <br>
-          Excepto cuando está muy picante.
-        </p>
-      </article>
-      <article class="entradaBlog">
-        <h3>Takoyaki y confianza</h3>
-        <p>
-          El takoyaki parece pequeño. <br>
-          <br>
-          Pero está extremadamente caliente por dentro. <br>
-          <br>
-          Eso enseña algo. <br>
-          <br>
-          No juzgar por temperatura externa. <br>
-          <br>
-          Fin del análisis gastronómico.
-          <div style="text-align: center;">
-          <img src="Multimedia/seccionEstudiosEntradaBlog3.jpg" alt="Osaka sosteniendo un takoyaki alegremente"
-            style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
-        </div>
-        </p>
-      </article>
-    </section>
-  </main>
+            <img src="Multimedia/seccionEstudiosEntradaBlog1.jpg" alt="Osaka comiendo un pan tranquilamente."
+              style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
+          </div>
+          </p>
+          </article>
+          <article class="entradaBlog">
+            <h3>Curry existencial</h3>
+            <p>
+              El curry tiene muchas cosas mezcladas. <br>
+              <br>
+              Pero no se pelea. <br>
+              <br>
+              Todos los ingredientes cooperan. <br>
+              <br>
+              Tal vez deberíamos ser más como el curry. <br>
+              <br>
+              Excepto cuando está muy picante.
+            </p>
+          </article>
+          <article class="entradaBlog">
+            <h3>Takoyaki y confianza</h3>
+            <p>
+              El takoyaki parece pequeño. <br>
+              <br>
+              Pero está extremadamente caliente por dentro. <br>
+              <br>
+              Eso enseña algo. <br>
+              <br>
+              No juzgar por temperatura externa. <br>
+              <br>
+              Fin del análisis gastronómico.
+            <div style="text-align: center;">
+              <img src="Multimedia/seccionEstudiosEntradaBlog3.jpg" alt="Osaka sosteniendo un takoyaki alegremente"
+                style="height: 250px; border: 10px solid #bc4768; border-radius: 20px;">
+            </div>
+            </p>
+          </article>
+        </section>
+      </main>
 
-  <footer style="background-color: #8e0359; padding: auto; color: aliceblue; text-align: center;">
-    <p>&copy; 2026 Mi Página Web</p>
-  </footer>
+      <footer style="background-color: #8e0359; padding: auto; color: aliceblue; text-align: center;">
+        <p>&copy; 2026 Mi Página Web</p>
+      </footer>
+    </div>
+
+    <aside id="osaka-contact">
+      <!-- Parte Visible del formulario llamativo -->
+      <div id="visible-main">
+        <h2>Cartas a Osaka</h2>
+      </div>
+
+      <!-- Parte Oculta del formulario -->
+      <div id="hidden-form">
+        <div id="contact-card">
+          <h3>Escribe una carta para Osaka</h3>
+          <p>Si quieres, puedes dejarle un mensaje a Osaka. Ella lo leerá con atención.</p>
+          <form>
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" id="name" name="name">
+            </div>
+            <div class="form-group">
+              <label for="email">Correo</label>
+              <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
+              <label for="message">Mensaje</label>
+              <textarea id="message" name="message"></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </aside>
+  </div>
 </body>
 
 </html>

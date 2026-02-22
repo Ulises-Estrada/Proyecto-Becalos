@@ -70,6 +70,25 @@ reutilizable. Incluye su propio `h3` y contenido.
 `footer`\
 Contiene información del aviso de copyright.
 
+`aside`\
+Contiene información adicional que no es esencial para el contenido
+principal.
+
+`form`\
+Contiene el formulario de contacto.
+
+`input`\
+Contiene los campos de entrada del formulario.
+
+`button`\
+Contiene los botones del formulario.
+
+`label`\
+Contiene las etiquetas de los campos del formulario.
+
+`textarea`\
+Es diferente de input porque permite escribir múltiples líneas de texto. Resultando en un texto más amplio.
+
 ---
 
 ### 3️⃣ Organización de los commits
@@ -91,5 +110,6 @@ Los commits fueron organizados de manera progresiva y descriptiva:
 - ⚡ Optimización de imágenes
 - 🌐 Mejora en accesibilidad (atributos ARIA, mejoras de contraste)
 - 🧪 Validación HTML y pruebas de usabilidad
+- 📩 Implementar la funcionalidad del formulario de contacto
 
 ---
