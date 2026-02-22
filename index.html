@@ -66,6 +66,20 @@
       text-transform: uppercase;
       letter-spacing: 4px;
     }
+
+    #hidden-form {
+      flex: 1;
+      padding: 40px 25px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s;
+      background-color: #fce4ec;
+    }
+
+    #osaka-contact:hover #hidden-form {
+      opacity: 1;
+      visibility: visible;
+    }
   </style>
 </head>
 
